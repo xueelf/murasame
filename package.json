@@ -1,0 +1,31 @@
+{
+  "name": "murasame",
+  "version": "0.0.0",
+  "description": "Implementation of a command line interfaces decorators.",
+  "engines": {
+    "node": ">=14.17",
+    "typescript": ">=5.2.0"
+  },
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "ts-node test.ts"
+  },
+  "keywords": [
+    "cli",
+    "command"
+  ],
+  "author": "Xue Elf <xueelf@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/minimist": "^1.2.4",
+    "@types/node": "^20.8.10",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "minimist": "^1.2.8"
+  },
+  "files": [
+    "src"
+  ]
+}
