@@ -3,6 +3,8 @@
 [![package](https://img.shields.io/npm/v/murasame?color=3CB371&label=murasame&style=flat-square&labelColor=FAFAFA&logo=npm)](https://www.npmjs.com/package/murasame)
 [![engine](https://img.shields.io/node/v/murasame?color=339933&style=flat-square&labelColor=FAFAFA&logo=Node.js)](https://nodejs.org)
 
+Read this in other languages: English | [简体中文](./README.zh.md)
+
 ## Introduction
 
 This project is an implementation of a command line interfaces decorators.
