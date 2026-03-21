@@ -1,31 +1,62 @@
 {
   "name": "murasame",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Implementation of a command line interfaces decorators.",
-  "engines": {
-    "node": ">=14.17",
-    "typescript": ">=5.2.0"
-  },
-  "main": "src/index.ts",
-  "scripts": {
-    "dev": "ts-node test.ts"
-  },
   "keywords": [
+    "bun",
     "cli",
     "command"
   ],
-  "author": "Xue Elf <xueelf@outlook.com>",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/minimist": "^1.2.4",
-    "@types/node": "^20.8.10",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.2.2"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xueelf/murasame.git"
   },
-  "dependencies": {
-    "minimist": "^1.2.8"
+  "homepage": "https://github.com/xueelf/murasame",
+  "bugs": {
+    "url": "https://github.com/xueelf/murasame/issues"
   },
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./interact": "./src/prompts/index.ts",
+    "./prompts": "./src/prompts/index.ts"
+  },
+  "types": "./types/index.d.ts",
   "files": [
-    "src"
-  ]
+    "src",
+    "types"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "author": "Yuki <admin@yuki.sh>",
+  "scripts": {
+    "format": "prettier **/*.ts --write",
+    "lint": "eslint **/*.ts",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@eslint/js": "^10.0.1",
+    "@types/bun": "^1.3.12",
+    "eslint": "^10.2.0",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.2",
+    "typescript-eslint": "^8.58.1"
+  },
+  "peerDependencies": {
+    "typescript": "^6.0.2"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "bun",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "bun",
+      "onFail": "error"
+    }
+  }
 }
