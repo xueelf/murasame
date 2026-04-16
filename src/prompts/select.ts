@@ -58,14 +58,14 @@ function renderChoiceLine(choice: SelectChoice, isSelected: boolean): string {
   const label = getChoiceLabel(choice);
 
   if (choice.disabled) {
-    return `${SYMBOL.INDENT}${colorize('dim', `${label} (disabled)`)}${ANSI.CLEAR_TO_END}\n`;
+    return `\r${SYMBOL.INDENT}${colorize('dim', `${label} (disabled)`)}${ANSI.CLEAR_TO_END}\n`;
   }
 
   if (isSelected) {
-    return `${SYMBOL.POINTER}${colorize('underline', label)}${ANSI.CLEAR_TO_END}\n`;
+    return `\r${SYMBOL.POINTER}${colorize('underline', label)}${ANSI.CLEAR_TO_END}\n`;
   }
 
-  return `${SYMBOL.INDENT}${label}${ANSI.CLEAR_TO_END}\n`;
+  return `\r${SYMBOL.INDENT}${label}${ANSI.CLEAR_TO_END}\n`;
 }
 
 function renderChoices(
@@ -74,7 +74,7 @@ function renderChoices(
   moveCursorUp = true,
 ): void {
   if (moveCursorUp) {
-    writeText(ANSI.CURSOR_UP(choices.length));
+    writeText(`\r${ANSI.CURSOR_UP(choices.length)}`);
   }
 
   for (let index = 0; index < choices.length; index += 1) {
@@ -194,24 +194,21 @@ export function select(
 
   clearInteractiveBlock(choices.length);
 
-  if (isCancelled) {
-    writeText(SYMBOL.ERROR, 'Cancelled\n');
-    return null;
-  }
-
   const selectedChoice = choices[selectedIndex];
 
-  if (!selectedChoice) {
-    return null;
+  if (selectedChoice) {
+    writeText(
+      SYMBOL.SUCCESS,
+      message,
+      colorize('dim', ': '),
+      colorize('cyan', getChoiceLabel(selectedChoice)),
+      '\n',
+    );
   }
 
-  writeText(
-    SYMBOL.SUCCESS,
-    message,
-    colorize('dim', ': '),
-    getChoiceLabel(selectedChoice),
-    '\n',
-  );
-
-  return selectedChoice;
+  if (isCancelled) {
+    writeText('\n', SYMBOL.ERROR, 'Cancelled\n');
+    return null;
+  }
+  return selectedChoice || null;
 }

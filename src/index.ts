@@ -5,3 +5,4 @@ if (Symbol.metadata === undefined) {
 }
 export * from './decorators';
 export * from './runtime';
+export { colorize } from './utils';

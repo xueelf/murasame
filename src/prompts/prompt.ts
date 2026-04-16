@@ -2,7 +2,6 @@ import { SPACE, colorize, writeText } from '@/utils/terminal';
 
 export interface PromptOptions {
   default?: string;
-  defaultValue?: string;
 }
 
 function resolveDefaultValue(
@@ -11,8 +10,7 @@ function resolveDefaultValue(
   if (typeof options === 'string') {
     return options;
   }
-
-  return options?.default ?? options?.defaultValue;
+  return options?.default;
 }
 
 export function promptText(
@@ -24,9 +22,8 @@ export function promptText(
   if (message.length > 0) {
     const suffix = defaultValue ? `(${defaultValue}):` : ':';
 
-    writeText(colorize('cyan', message), SPACE, colorize('dim', suffix), SPACE);
+    writeText(colorize('cyan', message), SPACE, colorize('dim', suffix));
   }
-
   const result = prompt('');
 
   if (result === null) {
