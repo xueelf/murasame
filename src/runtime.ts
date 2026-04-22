@@ -1,15 +1,13 @@
 import { parseArgs } from 'util';
-import type { CommandOptions } from '@/decorators/Command';
-import type { CommandClass, ProgramOptions } from '@/decorators/Program';
+import type { CommandOptions } from './decorators/Command';
+import type { CommandClass, ProgramOptions } from './decorators/Program';
 import {
   getCommandOptions,
   getOptionRegistry,
   getProgramOptions,
   type RegisteredOption,
-} from '@/utils/metadata';
-import { colorize, type ThemeColor, visibleTextWidth } from '@/utils/terminal';
-
-type ProgramClass = abstract new (...args: never[]) => object;
+} from './utils/metadata';
+import { colorize, type ThemeColor, visibleTextWidth } from './utils/terminal';
 
 type ParseOptionSpec = {
   type: 'boolean' | 'string';
@@ -358,7 +356,7 @@ function printCommandHelp(
   }
 
   if (command.command.description) {
-    console.log(`\n  ${command.command.description}`);
+    console.log(`  ${command.command.description}`);
   }
 
   console.log('');
@@ -421,9 +419,9 @@ function printCommandHelp(
     }
   }
 
-  if (command.command.bottom && command.command.bottom.length > 0) {
+  if (command.command.epilog && command.command.epilog.length > 0) {
     console.log('');
-    for (const line of command.command.bottom) {
+    for (const line of command.command.epilog) {
       console.log(line);
     }
   }
@@ -442,7 +440,7 @@ function printUnknownCommand(
 }
 
 export function execute(
-  ProgramClass: ProgramClass,
+  ProgramClass: CommandClass,
   argv: readonly string[] = process.argv.slice(2),
 ): void {
   const programOptions = getProgramOptions(ProgramClass) ?? {};

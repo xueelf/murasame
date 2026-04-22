@@ -1,6 +1,6 @@
 import { cc } from 'bun:ffi';
-import source from '@/native/terminal.c' with { type: 'file' };
-import { ANSI, SYMBOL, colorize, writeText } from '@/utils/terminal';
+import source from '../native/terminal.c' with { type: 'file' };
+import { ANSI, SYMBOL, colorize, writeText } from '../utils/terminal';
 
 export interface SelectChoice {
   value: string;
@@ -9,8 +9,6 @@ export interface SelectChoice {
   disabled?: boolean;
   selected?: boolean;
 }
-
-export type SelectOption = SelectChoice;
 
 const terminalBindings = cc({
   source,

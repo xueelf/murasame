@@ -3,7 +3,7 @@ import type {
   OptionOptions,
   OptionValue,
   ProgramOptions,
-} from '@/decorators';
+} from '../decorators';
 
 export interface RegisteredOption extends OptionOptions {
   type: 'boolean' | 'string';
@@ -16,18 +16,8 @@ type Metadata = {
   options?: Record<string, RegisteredOption>;
 };
 
-function isRecord(value: unknown): value is Record<PropertyKey, unknown> {
-  return value !== null && typeof value === 'object';
-}
-
-function isOptionRegistry(
-  value: unknown,
-): value is Record<string, RegisteredOption> {
-  return isRecord(value) && !Array.isArray(value);
-}
-
 function isMetadata(value: unknown): value is Metadata {
-  return isRecord(value);
+  return value !== null && typeof value === 'object';
 }
 
 export function getMetadata(target: object): Metadata | undefined {
@@ -50,6 +40,5 @@ export function getCommandOptions(target: object): CommandOptions | undefined {
 export function getOptionRegistry(
   target: object,
 ): Record<string, RegisteredOption> | undefined {
-  const options = getMetadata(target)?.options;
-  return isOptionRegistry(options) ? options : undefined;
+  return getMetadata(target)?.options;
 }
