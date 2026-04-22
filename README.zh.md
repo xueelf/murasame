@@ -333,7 +333,7 @@ class EchoCommand {
 - **`category`**：命令分类，对应 `@Program` 的 `categories` 键名。
 - **`description`**：命令的说明文本，会自动对齐并显示在命令右侧。
 - **`examples`**：为当前命令添加使用示例。接收一个对象数组，包含 `syntax`（具体语法）与 `description`（说明文本）。
-- **`bottom`**：在当前命令帮助面板的最底部追加额外的补充说明或提示文本，支持传入字符串或由多行字符串组成的数组。
+- **`epilog`**：在当前命令帮助面板的最底部追加额外的补充说明或提示文本，接受一个字符串数组，每个元素独占一行。
 
 #### args
 
@@ -459,14 +459,14 @@ console.log(colorize('cyan', 'Hello, Murasame!'));
 console.log(colorize(['#57b497', 'bold'], 'Ciallo～(∠·ω< )⌒★'));
 ```
 
-### 文本输入：`promptText(message, options?)`
+### 文本输入：`input(message, options?)`
 
 阻塞当前主进程，等待用户在终端窗口输入一段普通的文本：
 
 ```typescript
-import { promptText } from 'murasame/interact';
+import { input } from 'murasame/prompts';
 
-const answer = promptText('What is your name', { default: 'Yuki' });
+const answer = input('What is your name', { default: 'Yuki' });
 console.log(`Hello, ${answer}!`);
 ```
 
@@ -475,7 +475,7 @@ console.log(`Hello, ${answer}!`);
 基于终端渲染出一个可使用键盘交互（上下选择与回车确认）的单选列表：
 
 ```typescript
-import { select } from 'murasame/interact';
+import { select } from 'murasame/prompts';
 
 const framework = select('Choose your favorite framework', [
   { label: 'Vue', value: 'vue' },
@@ -488,7 +488,7 @@ console.log(`Your choice: ${framework?.value}`);
 
 除了使用键盘方向键控制上下选择，你还可以使用 `j`、`k` 操作。同时，你可以连按两下 `ESC` 或者直接使用 `Ctrl + c` 来取消。
 
-细心的你可能已经发现了，不论是 `promptText` 还是 `select`，在终端的排版样式以及逻辑交互上，也都是与 Bun 的 CLI 完全一致的。
+细心的你可能已经发现了，不论是 `input` 还是 `select`，在终端的排版样式以及逻辑交互上，也都是与 Bun 的 CLI 完全一致的。
 
 ## FAQ
 

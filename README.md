@@ -333,7 +333,7 @@ class EchoCommand {
 - **`category`**: Command category, corresponding to the `categories` key in `@Program`.
 - **`description`**: The description text of the command, which will automatically align and display on the right side of the command.
 - **`examples`**: Add usage examples for the current command. Accepts an array of objects containing `syntax` and `description`.
-- **`bottom`**: Append additional supplementary explanations or prompt texts at the very bottom of the current command's help panel. Supports passing a string or an array composed of multi-line strings.
+- **`epilog`**: Append additional supplementary explanations or prompt texts at the very bottom of the current command's help panel. Accepts an array of strings, one per line.
 
 #### args
 
@@ -471,14 +471,14 @@ console.log(colorize('cyan', 'Hello, Murasame!'));
 console.log(colorize(['#57b497', 'bold'], 'Ciallo～(∠·ω< )⌒★'));
 ```
 
-### Text Input: `promptText(message, options?)`
+### Text Input: `input(message, options?)`
 
 Blocks the executing main thread, waiting for the user to input a piece of normal text content within the terminal window:
 
 ```typescript
-import { promptText } from 'murasame/interact';
+import { input } from 'murasame/prompts';
 
-const answer = promptText('What is your name?', { default: 'Yuki' });
+const answer = input('What is your name?', { default: 'Yuki' });
 console.log(`Hello, ${answer}!`);
 ```
 
@@ -487,7 +487,7 @@ console.log(`Hello, ${answer}!`);
 Renders a selectable single-choice list on the terminal where users can seamlessly interact using the keyboard (up/down selection and enter to confirm):
 
 ```typescript
-import { select } from 'murasame/interact';
+import { select } from 'murasame/prompts';
 
 const framework = select('Choose your favorite framework:', [
   { label: 'Vue', value: 'vue' },
@@ -500,7 +500,7 @@ console.log(`Your choice: ${framework?.value}`);
 
 Besides interacting visually with keyboard arrow keys, you can also operate using `j` and `k`. Simultaneously, triggering a double press of `ESC` or directly hitting `Ctrl + c` will cancel the operation.
 
-If you are careful enough, you might have already noticed that whether it's `promptText` or `select`, their terminal layout styling and logical interactive behaviors are entirely identical to the native Bun CLI.
+If you are careful enough, you might have already noticed that whether it's `input` or `select`, their terminal layout styling and logical interactive behaviors are entirely identical to the native Bun CLI.
 
 ## FAQ
 
