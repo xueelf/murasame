@@ -1,4 +1,4 @@
-import { type ThemeColor } from '@/utils/terminal';
+import { type ThemeColor } from '../utils/terminal';
 
 export type CommandClass = abstract new (...args: never[]) => object;
 

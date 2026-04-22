@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'bun:test';
-import { Command, Option, Program } from '@/index';
-import { getMetadata, getOptionRegistry } from '@/utils';
+import { Command, Option, Program } from '../src/index';
+import { getMetadata, getOptionRegistry } from '../src/utils';
 
 describe('decorators', () => {
   test('writes program config to Symbol.metadata', () => {

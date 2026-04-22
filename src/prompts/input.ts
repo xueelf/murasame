@@ -1,11 +1,11 @@
-import { SPACE, colorize, writeText } from '@/utils/terminal';
+import { SPACE, colorize, writeText } from '../utils/terminal';
 
-export interface PromptOptions {
+export interface InputOptions {
   default?: string;
 }
 
 function resolveDefaultValue(
-  options?: PromptOptions | string,
+  options?: InputOptions | string,
 ): string | undefined {
   if (typeof options === 'string') {
     return options;
@@ -13,9 +13,9 @@ function resolveDefaultValue(
   return options?.default;
 }
 
-export function promptText(
+export function input(
   message: string,
-  options?: PromptOptions | string,
+  options?: InputOptions | string,
 ): string | null {
   const defaultValue = resolveDefaultValue(options);
 

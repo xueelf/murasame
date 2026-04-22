@@ -10,7 +10,7 @@ export interface CommandOptions {
   category?: string;
   aliases?: string | readonly string[];
   examples?: readonly CommandExample[];
-  bottom?: readonly string[];
+  epilog?: readonly string[];
 }
 
 export function Command(options: CommandOptions | string) {

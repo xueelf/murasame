@@ -1,4 +1,4 @@
-import { type RegisteredOption } from '@/utils/metadata';
+import { type RegisteredOption } from '../utils/metadata';
 
 export interface OptionOptions {
   description?: string;
