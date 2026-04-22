@@ -1,34 +1,33 @@
 {
   "name": "murasame",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Implementation of a command line interfaces decorators.",
   "keywords": [
     "bun",
     "cli",
     "command"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/xueelf/murasame.git"
-  },
   "homepage": "https://github.com/xueelf/murasame",
   "bugs": {
     "url": "https://github.com/xueelf/murasame/issues"
   },
-  "main": "src/index.ts",
-  "exports": {
-    ".": "./src/index.ts",
-    "./interact": "./src/prompts/index.ts",
-    "./prompts": "./src/prompts/index.ts"
-  },
-  "types": "./types/index.d.ts",
+  "license": "MIT",
+  "author": "Yuki <admin@yuki.sh>",
   "files": [
     "src",
     "types"
   ],
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./prompts": "./src/prompts/index.ts"
+  },
   "type": "module",
-  "license": "MIT",
-  "author": "Yuki <admin@yuki.sh>",
+  "types": "./types/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xueelf/murasame.git"
+  },
   "scripts": {
     "format": "prettier **/*.ts --write",
     "lint": "eslint **/*.ts",
@@ -39,12 +38,13 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
+    "@commitlint/types": "^20.5.0",
     "@eslint/js": "^10.0.1",
     "@types/bun": "^1.3.12",
-    "eslint": "^10.2.0",
+    "eslint": "^10.2.1",
     "husky": "^9.1.7",
-    "prettier": "^3.8.2",
-    "typescript-eslint": "^8.58.1"
+    "prettier": "^3.8.3",
+    "typescript-eslint": "^8.59.0"
   },
   "peerDependencies": {
     "typescript": "^6.0.2"
